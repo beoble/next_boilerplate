@@ -1,8 +1,15 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import type { AppProps } from "next/app";
+import { wrapper } from "../src/app/store";
+import { GlobalStyle } from "../styles/globalStyle";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <>
+      <GlobalStyle />
+      <Component {...pageProps} />
+    </>
+  );
 }
 
-export default MyApp
+// Inject redux with wrapper using React.HOC
+export default wrapper.withRedux(MyApp);
